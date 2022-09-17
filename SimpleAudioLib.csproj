@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>CaptainCoder.SimpleAudio</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Joseph Collard</Authors>
     <Company>Captain Coder LLC</Company>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -22,18 +22,16 @@
 
   <ItemGroup>
     <None Include="LICENSE.txt" Pack="true" PackagePath="" />
-    <None Include="lib/net6.0/bass.dll" Pack="true" PackagePath="lib/net6.0/bass.dll" />
-    <None Include="lib/net6.0/libbass.dylib" Pack="true" PackagePath="lib/net6.0/libbass.dylib" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="lib/net6.0/bass.dll">
+    <Content Include="libs/bass.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>true</Pack>
       <TargetPath>bass.dll</TargetPath>
     </Content>
 
-    <Content Include="lib/net6.0/libbass.dylib">
+    <Content Include="libs/libbass.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Pack>true</Pack>
       <TargetPath>libbass.dylib</TargetPath>
