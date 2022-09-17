@@ -1,4 +1,3 @@
-using NAudio.Wave;
 namespace CaptainCoder.SimpleAudioLib;
 internal class AudioReference {
 
