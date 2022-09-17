@@ -4,6 +4,14 @@ A simple Audio Library for playing audio in Console Projects. This
 library is built on top of [ManagedBass](https://github.com/ManagedBass/ManagedBass). It starts
 a background thread which manages the disposal of audio automagically. 
 
+## Install
+
+You can add as a NuGet package:
+
+```
+dotnet add package CaptainCoder.SimpleAudio
+```
+
 ## Playing Local Files
 
 ```csharp

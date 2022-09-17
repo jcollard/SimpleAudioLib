@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>CaptainCoder.SimpleAudio</PackageId>
-    <Version>0.0.3</Version>
+    <Version>0.0.8</Version>
     <Authors>Joseph Collard</Authors>
     <Company>Captain Coder LLC</Company>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -27,12 +27,16 @@
   <ItemGroup>
     <Content Include="libs/bass.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackageFlatten>true</PackageFlatten>
       <Pack>true</Pack>
       <TargetPath>bass.dll</TargetPath>
     </Content>
 
     <Content Include="libs/libbass.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackageFlatten>true</PackageFlatten>
       <Pack>true</Pack>
       <TargetPath>libbass.dylib</TargetPath>
     </Content>
