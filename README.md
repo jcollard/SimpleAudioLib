@@ -1,7 +1,7 @@
 # Simple Audio Lib
 
 A simple Audio Library for playing audio in Console Projects. This 
-library is built on top of [NAudio](https://github.com/naudio/NAudio). It starts
+library is built on top of [ManagedBass](https://github.com/ManagedBass/ManagedBass). It starts
 a background thread which manages the disposal of audio automagically. 
 
 ## Playing Local Files

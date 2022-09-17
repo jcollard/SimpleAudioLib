@@ -1,7 +1,5 @@
 ﻿using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Reflection;
-using NAudio.Wave;
+using ManagedBass;
 
 namespace CaptainCoder.SimpleAudioLib;
 public static class SimpleAudio
@@ -13,6 +11,9 @@ public static class SimpleAudio
 
     static SimpleAudio()
     {
+        if (!Bass.Init()) {
+            Console.Error.WriteLine("Could not initialize Audio Device.");
+        }
         MainThread = Thread.CurrentThread;
         checker = new Thread(CheckDispose);
         checker.Start();
@@ -31,17 +32,13 @@ public static class SimpleAudio
             Thread.Sleep(100);
         }
         StopAllAudio();
+        Bass.Free();
     }
 
-    /// <summary>
-    /// Given a URL, attempts to download and play it as an audio file.
-    /// </summary>
-    /// <param name="url"></param>
-    public static void PlayURL(string url)
+    public static void PlayURL(string URL)
     {
-        WasapiOut wo = new WasapiOut();
-        wo.Init(new MediaFoundationReader(url));
-        AudioReference reference = new AudioReference(new WasapiOutAdapter(wo));
+        AudioAdapter adapter = new BassAudioAdapter(Bass.CreateStream(URL, 0, BassFlags.Default, null), URL);
+        AudioReference reference = new (adapter);
         reference.Play();
         audio[$"{NextID++}"] = reference;
     }
@@ -52,10 +49,8 @@ public static class SimpleAudio
     /// <param name="path"></param>
     public static void PlayFile(string path)
     {
-        AudioFileReader audioFile = new AudioFileReader(path);
-        WaveOutEvent outputDevice = new WaveOutEvent();
-        outputDevice.Init(audioFile);
-        AudioReference reference = new (new WaveOutEventAdapter(outputDevice));
+        AudioAdapter adapter = new BassAudioAdapter(Bass.CreateStream(path), path);
+        AudioReference reference = new (adapter);
         reference.Play();
         audio[$"{NextID++}"] = reference;
     }

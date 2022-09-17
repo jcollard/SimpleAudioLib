@@ -14,18 +14,33 @@
     <PackageProjectUrl>https://github.com/jcollard/SimpleAudioLib/</PackageProjectUrl>
     <Description>
       An incredibly simple Audio Library for playing audio in Console projects. This 
-      library is built on top of [NAudio](https://github.com/naudio/NAudio). It starts
+      library is built on top of [ManagedBass](https://github.com/ManagedBass/ManagedBass). It starts
       a background thread which manages the disposal of audio automagically. 
     </Description>
     <Copyright>2022 Captain Coder LLC</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LICENSE.txt" Pack="true" PackagePath=""/>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="libs/bass.dll" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NAudio" Version="2.1.0" />
+    <Content Include="libs/bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <TargetPath>bass.dll</TargetPath>
+    </Content>
+
+    <Content Include="libs/libbass.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <TargetPath>libbass.dylib</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ManagedBass" Version="3.1.1" />
   </ItemGroup>
 
 </Project>
